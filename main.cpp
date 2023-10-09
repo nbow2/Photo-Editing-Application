@@ -1,14 +1,14 @@
 /*
-FCI - Programming 1 - 2022 - Assignment 3
+FCI - Programming 1 - 2023 - Assignment 3
 Program Name: Photo Editing Application
-Last Modification Date: 9/10/2022
-Author1 and ID and Group: Ahmed dafalla mohamed Abdalla , 20210912
-Author2 and ID and Group: Omar Sayedna Ali Salih , 20210703
-Author3 and ID and Group:
+Last Modification Date: 9/10/2023
+Author1 and ID and Group: Ahmed dafalla mohamed Abdalla , 20210912 , nmawg22@gmail.com
+Author2 and ID and Group: Omar Sayedna Ali Salih , 20210703 ,
+Author3 and ID and Group: Faisal Ahmed Awad ,20210804 ,
 
-Purpose: Perform 6 filters on gray scale photos only
+Purpose: Perform 6 filters on gray scale photos and auto save only
 
-Phase 2: All 12 filters are ready. ان شاء الله
+Phase 2: All 12 filters and save function are ready. ان شاء الله
  */
 #include <iostream>
 #include <bits/stdc++.h>
@@ -70,6 +70,9 @@ static void fFliter(unsigned char image[][SIZE]) {
             cout<<"1 for vertical 2 for Horizontal \n ";
             int s ;
             cin>> s;
+
+            ///////////////////////////////////////////
+            ////////////for vertical image////////////
             if (s == 1 ) {
 
 
@@ -86,6 +89,8 @@ static void fFliter(unsigned char image[][SIZE]) {
                     }
                 }
             }
+            ///////////////////////////////////////////////
+            ////////for horizontal image//////////////////
             if (s == 2 ){
                 for (int row = 0; row < height; row++) {
                     for (int col = 0; col < width; col++) {
@@ -147,12 +152,15 @@ static void fFliter(unsigned char image[][SIZE]) {
             }
             break;
         case 4:
-            cout<<"1 for black 2 for Light \n";
+            cout<<"1 for Light 2 for Black \n";
             int a ;
             cin>>a;
             ////////////////////////////////////
             //////for light or black Image/////
             if (a == 1){
+
+                ///////////////////////////////////
+                /////////for light image /////////
             for (int i = 0; i < SIZE; i++){
                 for (int j = 0; j < SIZE; j++){
 
@@ -162,7 +170,11 @@ static void fFliter(unsigned char image[][SIZE]) {
                     }
                     else image [i][j] +=50;
                 }
-            }} else
+                /////////////////////////////
+                //////////for black Image////
+            }
+            }
+            if (a == 2 )
             {
                 for (int i =0; i < SIZE; i++){
                     for (int j = 0; j < SIZE; j++){
@@ -173,10 +185,11 @@ static void fFliter(unsigned char image[][SIZE]) {
 
                         }
                         else image [i][j] -= 50 ;
-
                     }
                 }
             }
+            else {cout<<" pls Enter 1 or 2  \n"; cin>>a;}
+
             break;
         case 5:
 
@@ -206,7 +219,7 @@ static void fFliter(unsigned char image[][SIZE]) {
             while (true)
             {
                 cout << "Which quarter of the image would you like to enlarge:\n";
-                cout << "1- First Quarter\n2- Second Quarter\n3- Third Quarter\n4- Fourth Quarter\n";
+                cout << "1 for First Quarter\n2 for Second Quarter\n3 for Third Quarter\n4 for Fourth Quarter\n";
                 cout << "Please enter your choice, either 1 or 2 or 3 or 4\n>>";
                 getline(cin, choices);
                 if (isvalid(choices, no_of_choices))
@@ -245,22 +258,19 @@ static void fFliter(unsigned char image[][SIZE]) {
 
                 }
             }
-            for (int i = 0; i < SIZE; i++) {
-                for (int j = 0; j < SIZE; j++) {
 
-                    image[i][j] = chosenQuarter[i][j];
-                }
-            }
 
             break;
 
+
     }
+
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    std::cout << "Hello,and Welcome to image editor!" << std::endl;
    //it gave my the path for image
    // cout<<getcwd(cwd,sizeof (cwd)) ;
 
@@ -290,7 +300,7 @@ int main() {
             showRGBBMP(ImageRG);
             break;
         default:
-            cout<<"pls Enter 1 or 2 \n";
+            //cout<<"pls Enter 1 or 2 \n"; cin>>num;
             break;
     }
     return 0;
